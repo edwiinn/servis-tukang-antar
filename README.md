@@ -3,7 +3,7 @@
 ### Anggota Kelompok
 
 - Ganendra Afrasya S
-- Steve Daniel
+- Steve Daniels
 - Edwin Hartoyo
 
 ### To-do list
