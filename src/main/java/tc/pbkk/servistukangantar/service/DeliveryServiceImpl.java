@@ -1,5 +1,6 @@
 package tc.pbkk.servistukangantar.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,38 @@ public class DeliveryServiceImpl implements DeliveryService{
 	
 	@Override
 	public List<Delivery> getAllDelivery() {
-		List<Delivery>deliverys = (List<Delivery>) deliveryRepository.findAll();
-		return deliverys;
+		List<Delivery> deliveries = (List<Delivery>) deliveryRepository.findAll();
+		return deliveries;
 	}
+
+	@Override
+	public void addDelivery(Delivery delivery) {
+		deliveryRepository.save(delivery);
+		
+	}
+
+	@Override
+	public Delivery getDelivery(Integer deliveryId) {
+		
+		return deliveryRepository.findById(deliveryId).get();
+	}
+
+	@Override
+	public void updateDelivery(Integer deliveryId, Boolean isArrived, Date sentAt, Date arrivedAt) {
+		Delivery delivery = getDelivery(deliveryId);
+		
+		if(delivery == null) {
+			throw new RuntimeException(" Not Available");
+		}
+		delivery.setIsArrived(isArrived);
+		delivery.setSentAt(sentAt);
+		delivery.setArrivedAt(arrivedAt);
+	}
+
+	@Override
+	public void deleteDelivery(Integer deliveryId) {
+		deliveryRepository.deleteById(deliveryId);
+	}
+	
 
 }
