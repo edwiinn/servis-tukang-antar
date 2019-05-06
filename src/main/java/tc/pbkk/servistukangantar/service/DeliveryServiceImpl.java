@@ -22,9 +22,10 @@ public class DeliveryServiceImpl implements DeliveryService{
 	}
 
 	@Override
-	public void addDelivery(Delivery delivery) {
+	public Delivery addDelivery(Delivery delivery) {
 		deliveryRepository.save(delivery);
 		
+		return delivery;
 	}
 
 	@Override
@@ -34,15 +35,13 @@ public class DeliveryServiceImpl implements DeliveryService{
 	}
 
 	@Override
-	public void updateDelivery(Integer deliveryId, Boolean isArrived, Date sentAt, Date arrivedAt) {
-		Delivery delivery = getDelivery(deliveryId);
-		
-		if(delivery == null) {
-			throw new RuntimeException(" Not Available");
+	public Delivery updateDelivery(Delivery delivery) {
+		if (delivery == null) {
+			throw new RuntimeException("Not Available");
 		}
-		delivery.setIsArrived(isArrived);
-		delivery.setSentAt(sentAt);
-		delivery.setArrivedAt(arrivedAt);
+		deliveryRepository.save(delivery);
+		
+		return delivery;
 	}
 
 	@Override

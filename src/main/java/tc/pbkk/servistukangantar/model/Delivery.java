@@ -1,6 +1,5 @@
 package tc.pbkk.servistukangantar.model;
 
-import java.util.Date;
 import javax.persistence.*;
 @Entity
 public class Delivery {
@@ -11,8 +10,8 @@ public class Delivery {
 	
 	private Integer orderId;
 	private Boolean isArrived;
-	private Date sentAt;
-	private Date arrivedAt;
+	private Long sentAt;
+	private Long arrivedAt;
 	
 	public Integer getId() {
 		return id;
@@ -32,18 +31,11 @@ public class Delivery {
 	public void setIsArrived(Boolean isArrived) {
 		this.isArrived = isArrived;
 	}
-	public Date getSentAt() {
-		return sentAt;
-	}
-	public void setSentAt(Date sentAt) {
+	public void setSentAt(Long sentAt) {
 		this.sentAt = sentAt;
 	}
-	public Date getArrivedAt() {
-		return arrivedAt;
-	}
-	public void setArrivedAt(Date arrivedAt) {
+	public void setArrivedAt(Long arrivedAt) {
 		this.arrivedAt = arrivedAt;
 	}
-	
-	
+
 }
