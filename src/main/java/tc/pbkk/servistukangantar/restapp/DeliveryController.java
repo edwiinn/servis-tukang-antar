@@ -1,6 +1,7 @@
 package tc.pbkk.servistukangantar.restapp;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,50 +24,33 @@ public class DeliveryController {
 	private DeliveryService deliveryService;
 
 	@GetMapping()
-	public Map<String, Object> getDeliveries() {
-		Map<String, Object> result = new LinkedHashMap<String, Object>();
-		result.put("status", "success");
-		result.put("data", deliveryService.getAllDelivery());
-
-		return result;
+	public List<Delivery> getDeliveries() {
+		return deliveryService.getAllDelivery();
 	}
 	
 	@GetMapping("{id}")
-	public Map<String, Object> getDeliveryById(@PathVariable Integer id) {
-		Map<String, Object> result = new LinkedHashMap<String, Object>();
-		result.put("status", "success");
-		result.put("result", deliveryService.getDelivery(id));
-
-		return result;
+	public Delivery getDeliveryById(@PathVariable Integer id) {
+		return deliveryService.getDelivery(id);
 	}
 	
 	@PostMapping()
-	public Map<String, Object> postDelivery(@ModelAttribute Delivery delivery) {
-		Map<String, Object> result = new LinkedHashMap<String, Object>();
-		result.put("status", "success");
-		result.put("result", deliveryService.addDelivery(delivery));
-
-		return result;
+	public Delivery postDelivery(@ModelAttribute Delivery delivery) {
+		return deliveryService.addDelivery(delivery);
 	}
 	
 	@PutMapping("{id}")
-	public Map<String, Object> updateDelivery(@PathVariable Integer id, @ModelAttribute Delivery delivery) {
+	public Delivery updateDelivery(@PathVariable Integer id, @ModelAttribute Delivery delivery) {
 		delivery.setId(id);
-
-		Map<String, Object> result = new LinkedHashMap<String, Object>();
-		result.put("status", "success");
-		result.put("data", deliveryService.addDelivery(delivery));
-
-		return result;
+		
+		return deliveryService.addDelivery(delivery);
 	}
 	
 	@DeleteMapping("{id}")
 	public Map<String, String> deleteDelivery(@PathVariable Integer id) {
 		deliveryService.deleteDelivery(id);
 		
-		Map<String, String> result = new LinkedHashMap<String, String>();
-		result.put("status", "success");
-		result.put("data", "Delivery ID: " + id + " deleted!");
+		Map<String, String > result = new LinkedHashMap<String, String>();
+		result.put("Result", "Delivery ID: " + id + " deleted!");
 		
 		return result;
 	}
