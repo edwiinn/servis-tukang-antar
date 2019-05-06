@@ -31,11 +31,20 @@ public class Delivery {
 	public void setIsArrived(Boolean isArrived) {
 		this.isArrived = isArrived;
 	}
+
+	public Long getSentAt() {
+		return sentAt;
+	}
+	
 	public void setSentAt(Long sentAt) {
 		this.sentAt = sentAt;
 	}
+	
+	public Long getArrivedAt() {
+		return arrivedAt;
+	}
+	
 	public void setArrivedAt(Long arrivedAt) {
 		this.arrivedAt = arrivedAt;
 	}
-
 }
