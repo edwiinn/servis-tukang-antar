@@ -34,19 +34,20 @@ public class DeliveryServiceImpl implements DeliveryService{
 	}
 
 	@Override
-	public Delivery updateDelivery(Delivery delivery) {
-		if (delivery == null) {
+	public Delivery updateDelivery(Integer id,Delivery delivery) {
+		if (getDelivery(id) == null) {
 			throw new RuntimeException("Not Available");
 		}
+		delivery.setId(id);
 		deliveryRepository.save(delivery);
 		
 		return delivery;
 	}
 
-	@Override
-	public void deleteDelivery(Integer deliveryId) {
-		deliveryRepository.deleteById(deliveryId);
-	}
-	
+//	@Override
+//	public void deleteDelivery(Integer deliveryId) {
+//		deliveryRepository.deleteById(deliveryId);
+//	}
+//	
 
 }
