@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("delivery/{deliveryId}/log")
-public class DeliveryLogControler {
+public class LocationLogControler {
 	@GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String getAllLogs(@PathVariable Integer deliveryId) {
 		return "Return all logs";

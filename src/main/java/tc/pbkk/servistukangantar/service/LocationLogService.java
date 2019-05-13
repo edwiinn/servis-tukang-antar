@@ -4,7 +4,7 @@ import java.util.List;
 
 import tc.pbkk.servistukangantar.model.LocationLog;
 
-public interface DeliveryLogService {
+public interface LocationLogService {
 	public List<LocationLog> getAllLogs();
 
 	public List<LocationLog> getLogsByDeliveryId(Integer deliveryId);

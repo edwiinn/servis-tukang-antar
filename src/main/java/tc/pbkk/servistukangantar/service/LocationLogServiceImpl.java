@@ -4,7 +4,7 @@ import java.util.List;
 
 import tc.pbkk.servistukangantar.model.LocationLog;
 
-public class DeliveryLogServiceImpl implements DeliveryLogService {
+public class LocationLogServiceImpl implements LocationLogService {
 
 	@Override
 	public List<LocationLog> getAllLogs() {
