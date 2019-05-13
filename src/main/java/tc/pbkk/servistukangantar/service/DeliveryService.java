@@ -9,5 +9,4 @@ public interface DeliveryService{
 	public Delivery addDelivery(Delivery delivery);
 	public Delivery getDelivery(Integer deliveryId);
 	public Delivery updateDelivery(Integer id,Delivery delivery);
-//	public void deleteDelivery(Integer deliveryId);
 }

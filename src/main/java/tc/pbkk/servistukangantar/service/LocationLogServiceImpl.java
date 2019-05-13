@@ -2,32 +2,30 @@ package tc.pbkk.servistukangantar.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import tc.pbkk.servistukangantar.dao.LocationLogRepository;
 import tc.pbkk.servistukangantar.model.LocationLog;
 
+@Service
 public class LocationLogServiceImpl implements LocationLogService {
 
-	@Override
-	public List<LocationLog> getAllLogs() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Autowired
+	private LocationLogRepository locationLogRepository;
 
 	@Override
-	public List<LocationLog> getLogsByDeliveryId(Integer deliveryId) {
-		// TODO Auto-generated method stub
-		return null;
+	public LocationLog addLog(LocationLog log) {
+		locationLogRepository.save(log);
+
+		return log;
 	}
 
 	@Override
 	public LocationLog getLatestLogByDeliveryId(Integer deliveryId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public LocationLog addLog(LocationLog log) {
-		// TODO Auto-generated method stub
-		return null;
+		LocationLog latestLocationLog = locationLogRepository.getLatesLocationLog(deliveryId);	
+	
+		return latestLocationLog;
 	}
 
 }

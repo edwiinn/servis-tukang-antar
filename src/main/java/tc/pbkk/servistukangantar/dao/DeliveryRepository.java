@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import tc.pbkk.servistukangantar.model.Delivery;
 
 @Repository
-public interface DeliveryRepository extends CrudRepository<Delivery, Integer>{
-	
-}
+public interface DeliveryRepository extends CrudRepository<Delivery, Integer> {}

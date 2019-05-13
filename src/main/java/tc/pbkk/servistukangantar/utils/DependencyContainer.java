@@ -3,8 +3,6 @@ package tc.pbkk.servistukangantar.utils;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

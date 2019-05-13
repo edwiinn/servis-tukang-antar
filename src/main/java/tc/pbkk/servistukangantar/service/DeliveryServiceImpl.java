@@ -44,10 +44,4 @@ public class DeliveryServiceImpl implements DeliveryService{
 		return delivery;
 	}
 
-//	@Override
-//	public void deleteDelivery(Integer deliveryId) {
-//		deliveryRepository.deleteById(deliveryId);
-//	}
-//	
-
 }

@@ -1,9 +1,5 @@
 package tc.pbkk.servistukangantar.restapp;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
