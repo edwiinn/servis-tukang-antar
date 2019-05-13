@@ -16,4 +16,8 @@
 - [ ] Implementasi auto generate timestamp
 - [ ] API Documentation
 
-Dokumentasi : https://documenter.getpostman.com/view/6831996/S1LyUnWt
+### Dokumentasi
+https://documenter.getpostman.com/view/6831996/S1LyUnWt
+
+![CDM](Asset/cdm.PNG)
+![PDM](Asset/pdm.PNG)
