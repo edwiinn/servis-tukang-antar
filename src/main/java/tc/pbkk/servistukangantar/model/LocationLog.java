@@ -13,7 +13,7 @@ public class LocationLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer id;
-    private Integer orderId;
+    private Integer deliveryId;
     private String driverLat;
     private String driverLong;
     private Long timestamp;
@@ -26,12 +26,12 @@ public class LocationLog {
 		this.id = id;
 	}
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getDeliveryId() {
+        return deliveryId;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setDeliveryId(Integer deliveryId) {
+        this.deliveryId = deliveryId;
     }
 
     public String getDriverLat() {
