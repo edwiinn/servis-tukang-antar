@@ -1,5 +1,7 @@
 package tc.pbkk.servistukangantar.service;
 
+import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ public class LocationLogServiceImpl implements LocationLogService {
 
 	@Override
 	public LocationLog addLog(LocationLog log) {
+		log.setTimestamp(Instant.now().getEpochSecond());
 		locationLogRepository.save(log);
 
 		return log;
