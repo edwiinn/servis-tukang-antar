@@ -15,3 +15,5 @@
 - [x] Implementasi service dan API Location log
 - [ ] Implementasi auto generate timestamp
 - [ ] API Documentation
+
+Dokumentasi : https://documenter.getpostman.com/view/6831996/S1LyUnWt
