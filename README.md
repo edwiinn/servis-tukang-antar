@@ -8,7 +8,10 @@
 
 ### To-do list
 
-- [ ] Base code structure
-- [ ] Implementasi model database dll
-- [ ] Implementasi service dan API
-- [ ] Dll
+- [x] Base code structure
+- [x] Implementasi model database Delivery
+- [x] Implementasi service dan API Delivery
+- [x] Implementasi model database Location log
+- [x] Implementasi service dan API Location log
+- [ ] Implementasi auto generate timestamp
+- [ ] API Documentation
