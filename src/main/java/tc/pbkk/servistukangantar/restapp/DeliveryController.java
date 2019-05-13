@@ -24,11 +24,6 @@ public class DeliveryController {
 	private DependencyContainer dependencyContainer = DependencyContainer.getInstance();
 	private Gson gson = dependencyContainer.getService(Gson.class);
 	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String getDeliveries() {
-		return gson.toJson(deliveryService.getAllDelivery());
-	}
-	
 	@GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String getDeliveryById(@PathVariable Integer id) {
 		return gson.toJson(deliveryService.getDelivery(id));

@@ -13,12 +13,6 @@ public class DeliveryServiceImpl implements DeliveryService{
 	
 	@Autowired
 	private DeliveryRepository deliveryRepository;
-	
-	@Override
-	public List<Delivery> getAllDelivery() {
-		List<Delivery> deliveries = (List<Delivery>) deliveryRepository.findAll();
-		return deliveries;
-	}
 
 	@Override
 	public Delivery addDelivery(Delivery delivery) {
