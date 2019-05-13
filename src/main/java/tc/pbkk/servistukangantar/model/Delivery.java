@@ -10,8 +10,6 @@ public class Delivery {
 	private Integer id;	
 	private Integer orderId;
 	private Integer driverId;
-	private String latestDriverLat;
-	private String latestDriverLong;
 	private String status;
 	private Long sentAt;
 	private Long arrivedAt;
@@ -38,22 +36,6 @@ public class Delivery {
 
 	public void setDriverId(Integer driverId) {
 		this.driverId = driverId;
-	}
-
-	public String getLatestDriverLat() {
-		return latestDriverLat;
-	}
-
-	public void setLatestDriverLat(String latestDriverLat) {
-		this.latestDriverLat = latestDriverLat;
-	}
-
-	public String getLatestDriverLong() {
-		return latestDriverLong;
-	}
-
-	public void setLatestDriverLong(String latestDriverLong) {
-		this.latestDriverLong = latestDriverLong;
 	}
 
 	public String getStatus() {
