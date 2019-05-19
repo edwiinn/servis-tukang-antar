@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -24,6 +25,13 @@ public class DeliveryController {
 	private DependencyContainer dependencyContainer = DependencyContainer.getInstance();
 	private Gson gson = dependencyContainer.getService(Gson.class);
 	
+	@GetMapping(
+		value = "/estimated", 
+		produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String getEstimatedCost(@RequestParam("start") String startPosition, @RequestParam("end") String endPosition) {
+		return gson.toJson(deliveryService.getEstimatedCost(startPosition, endPosition));
+	}
+
 	@GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String getDeliveryById(@PathVariable Integer id) {
 		return gson.toJson(deliveryService.getDelivery(id));
