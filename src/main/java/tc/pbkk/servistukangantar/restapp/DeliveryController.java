@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.google.gson.Gson;
 
@@ -60,9 +61,8 @@ public class DeliveryController {
 			authHandler.checkToken(authToken.getAccessToken(), requestToken);
 			return gson.toJson(deliveryService.getDelivery(id));
 		} catch (AuthenticationException exc) {
-//			throw new ResponseStatusException(HttpStatus.SC_UNAUTHORIZED);
+			return "unauthorized";
 		}
-		
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

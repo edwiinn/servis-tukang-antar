@@ -40,6 +40,7 @@ public class AuthHandler {
 				return true;
 			} else {
 				throw new AuthenticationException();
+//				throw new AuthenticationException(HttpStatus.SC_UNAUTHORIZED, "Unauthorized Token")
 			}
 		} catch (Exception e) {
 			throw new AuthenticationException();
