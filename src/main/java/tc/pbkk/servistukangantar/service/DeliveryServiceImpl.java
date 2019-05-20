@@ -45,9 +45,23 @@ public class DeliveryServiceImpl implements DeliveryService{
 		if (getDelivery(id) == null) {
 			throw new RuntimeException("Not Available");
 		}
-		delivery = deliveryRepository.findById(id).get();
-		deliveryRepository.save(delivery);
-		
+		Delivery originalDelivery = deliveryRepository.findById(id).get();
+		if(delivery.getDriverId() != null) {
+			originalDelivery.setDriverId(delivery.getDriverId());
+		}
+		if(delivery.getOrderId() != null) {
+			originalDelivery.setOrderId(delivery.getOrderId());
+		}
+		if(delivery.getStatus() != null) {
+			originalDelivery.setStatus(delivery.getStatus());
+		}
+		if(delivery.getSentAt() != null) {
+			originalDelivery.setSentAt(delivery.getSentAt());
+		}
+		if(delivery.getArrivedAt() != null) {
+			originalDelivery.setArrivedAt(delivery.getArrivedAt());
+		}
+		deliveryRepository.save(originalDelivery);
 		return delivery;
 	}
 

@@ -60,7 +60,7 @@ public class DeliveryController {
 			authHandler.checkToken(authToken.getAccessToken(), requestToken);
 			return gson.toJson(deliveryService.getDelivery(id));
 		} catch (AuthenticationException exc) {
-			throw new ResponseStatusException(HttpStatus.SC_UNAUTHORIZED);
+//			throw new ResponseStatusException(HttpStatus.SC_UNAUTHORIZED);
 		}
 		
 	}
