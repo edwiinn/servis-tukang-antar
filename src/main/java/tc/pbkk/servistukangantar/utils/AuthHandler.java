@@ -9,6 +9,7 @@ import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
+import org.apache.http.auth.AuthenticationException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
@@ -23,7 +24,7 @@ import tc.pbkk.servistukangantar.model.AuthToken;
 
 public class AuthHandler {
 	
-	public boolean checkToken(String deliveryToken, String tobeCheckToken) {
+	public boolean checkToken(String deliveryToken, String tobeCheckToken) throws AuthenticationException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost("https://rendoru.com/kuliah/pbkk/oauth/check_token");
 		httpPost.setHeader(HttpHeaders.AUTHORIZATION,"Bearer "+deliveryToken);
@@ -38,10 +39,10 @@ public class AuthHandler {
 			if(statusCode == HttpStatus.SC_OK) {
 				return true;
 			} else {
-				return false;
+				throw new AuthenticationException();
 			}
 		} catch (Exception e) {
-			return false;
+			throw new AuthenticationException();
 		}
 	}
 	

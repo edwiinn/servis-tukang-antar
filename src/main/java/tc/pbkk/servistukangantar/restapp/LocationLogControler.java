@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,12 +25,16 @@ public class LocationLogControler {
 	private Gson gson = dependencyContainer.getService(Gson.class);
 	
 	@GetMapping(value = "latest",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String getLatestLog(@PathVariable Integer deliveryId) {
+	public String getLatestLog(
+			@RequestHeader("Authorization") String requestToken,
+			@PathVariable Integer deliveryId) {
 		return gson.toJson(locationLogService.getLatestLogByDeliveryId(deliveryId));
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String postLog(@ModelAttribute LocationLog locationLog) {
+	public String postLog(
+			@RequestHeader("Authorization") String requestToken,
+			@ModelAttribute LocationLog locationLog) {
 		return gson.toJson(locationLogService.addLog(locationLog));
 	}
 }

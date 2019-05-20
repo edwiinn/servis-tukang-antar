@@ -1,8 +1,12 @@
 package tc.pbkk.servistukangantar.restapp;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.http.HttpStatus;
+import org.apache.http.auth.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +26,7 @@ import tc.pbkk.servistukangantar.service.DeliveryService;
 import tc.pbkk.servistukangantar.utils.AuthHandler;
 import tc.pbkk.servistukangantar.utils.DependencyContainer;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/delivery")
 public class DeliveryController {
@@ -35,25 +40,43 @@ public class DeliveryController {
 		value = "/estimated", 
 		produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String getEstimatedCost(
-	@RequestHeader("Authentication") String requestToken,
-	@RequestParam("start") String startPosition, 
-	@RequestParam("end") String endPosition) {
-		
+			@RequestHeader("Authorization") String requestToken,
+			@RequestParam("start") String startPosition, 
+			@RequestParam("end") String endPosition) {
+		try {
+			authHandler.checkToken(authToken.getAccessToken(), requestToken);
+		} catch (AuthenticationException e) {
+			e.printStackTrace();
+		}
 		return gson.toJson(deliveryService.getEstimatedCost(startPosition, endPosition));
 	}
 
 	@GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String getDeliveryById(@PathVariable Integer id) {
-		return gson.toJson(deliveryService.getDelivery(id));
+	public String getDeliveryById(
+			@RequestHeader("Authorization") String requestToken,
+			@PathVariable Integer id,
+			HttpServletResponse response) {
+		try {
+			authHandler.checkToken(authToken.getAccessToken(), requestToken);
+			return gson.toJson(deliveryService.getDelivery(id));
+		} catch (AuthenticationException exc) {
+			throw new ResponseStatusException(HttpStatus.SC_UNAUTHORIZED);
+		}
+		
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String postDelivery(@ModelAttribute Delivery delivery) {
+	public String postDelivery(
+			@RequestHeader("Authorization") String requestToken,
+			@ModelAttribute Delivery delivery) {
 		return gson.toJson(deliveryService.addDelivery(delivery));
 	}
 	
 	@PutMapping(value = "{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String updateDelivery(@PathVariable Integer id, @ModelAttribute Delivery delivery) {
+	public String updateDelivery(
+			@RequestHeader("Authorization") String requestToken,
+			@PathVariable Integer id,
+			@ModelAttribute Delivery delivery) {
 		return gson.toJson(deliveryService.updateDelivery(id, delivery));
 	}
 }
