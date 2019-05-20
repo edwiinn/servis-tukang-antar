@@ -7,12 +7,15 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import tc.pbkk.servistukangantar.model.AuthToken;
+
 public class DependencyContainer {
 	
 	private static DependencyContainer instance;
 	private Map<String, Object> service = new LinkedHashMap<String, Object>();
 	private DependencyContainer() {
 		this.setService(Gson.class, new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create());
+		this.setService(AuthHandler.class, new AuthHandler());
 	}
 	
 	public static DependencyContainer getInstance() {
